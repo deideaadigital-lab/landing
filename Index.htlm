@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102c52">
+  <meta name="description" content="Conoce la guía de 300 prompts de De Idea a Digital. Regístrate para recibir información.">
+  <title>Guía de 300 Prompts | De Idea a Digital</title>
+
+  <style>
+    :root {
+      --azul: #102c52;
+      --azul-oscuro: #0b203b;
+      --turquesa: #08a6b5;
+      --turquesa-hover: #078b98;
+      --amarillo: #ffd447;
+      --fondo: #f4f8fc;
+      --texto: #1d2a3a;
+      --muted: #5c6b7d;
+      --blanco: #ffffff;
+      --borde: #e6edf4;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--texto);
+      background: var(--fondo);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+    }
+
+    .contenedor {
+      width: min(1080px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: var(--blanco);
+      border-bottom: 1px solid var(--borde);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .barra {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--azul);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .marca-icono {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--azul);
+      color: var(--amarillo);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .marca-nombre { font-size: 17px; }
+
+    .boton {
+      display: inline-block;
+      padding: 14px 22px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--turquesa);
+      color: var(--blanco);
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .boton:hover {
+      background: var(--turquesa-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 76px 0 66px;
+      background:
+        radial-gradient(circle at 85% 15%, #d7f5f2 0, transparent 30%),
+        linear-gradient(135deg, #f4f8fc 0%, #eaf3fb 100%);
+    }
+
+    .hero-contenido {
+      max-width: 760px;
+    }
+
+    .etiqueta {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 99px;
+      background: #fff1bd;
+      color: #594700;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .4px;
+    }
+
+    h1 {
+      margin: 18px 0;
+      color: var(--azul);
+      font-size: clamp(38px, 7vw, 66px);
+      line-height: 1.04;
+      letter-spacing: -1.8px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .hero .boton { margin-top: 12px; }
+
+    .nota-boton {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Secciones */
+    section { padding: 64px 0; }
+
+    h2 {
+      margin: 0 0 12px;
+      color: var(--azul);
+      font-size: clamp(27px, 4vw, 38px);
+      line-height: 1.2;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 0 0 28px;
+      color: var(--muted);
+    }
+
+    .beneficios {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .tarjeta {
+      padding: 24px;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      background: var(--blanco);
+      box-shadow: 0 8px 24px #102c5208;
+    }
+
+    .tarjeta .numero {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      background: #e1f7f7;
+      color: #087d87;
+      font-weight: 800;
+    }
+
+    .tarjeta h3 {
+      margin: 0 0 8px;
+      color: var(--azul);
+      font-size: 19px;
+    }
+
+    .tarjeta p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* FAQ / Acordeón */
+    .faq-contenedor {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      background: var(--blanco);
+      overflow: hidden;
+    }
+
+    .faq-pregunta {
+      width: 100%;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      color: var(--azul);
+      font-size: 17px;
+      font-weight: 700;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .faq-icono {
+      font-size: 20px;
+      transition: transform .2s ease;
+    }
+
+    .faq-item.activo .faq-icono {
+      transform: rotate(45deg);
+    }
+
+    .faq-respuesta {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+      padding: 0 20px;
+      color: var(--muted);
+    }
+
+    .faq-item.activo .faq-respuesta {
+      max-height: 200px;
+      padding: 0 20px 18px;
+    }
+
+    /* Registro */
+    .registro {
+      background: var(--azul);
+      color: var(--blanco);
+    }
+
+    .registro h2 { color: var(--blanco); }
+
+    .registro .intro { color: #d5e1ef; }
+
+    .registro-caja {
+      max-width: 700px;
+      padding: 32px;
+      border-radius: 18px;
+      background: var(--blanco);
+      color: var(--texto);
+    }
+
+    .registro-caja p { margin-top: 0; }
+
+    .registro-caja .boton { width: 100%; }
+
+    .privacidad {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 24px 0;
+      background: var(--azul-oscuro);
+      color: #d5e1ef;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer p { margin: 4px 0; }
+
+    @media (max-width: 700px) {
+      .beneficios { grid-template-columns: 1fr; }
+      .hero { padding: 55px 0 48px; }
+      section { padding: 48px 0; }
+      .barra { min-height: 68px; }
+      .marca-nombre { font-size: 15px; }
+      .barra > .boton { padding: 11px 13px; font-size: 14px; }
+      .registro-caja { padding: 23px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="contenedor barra">
+      <a class="marca" href="#" aria-label="De Idea a Digital, inicio">
+        <span class="marca-icono" aria-hidden="true">DAD</span>
+        <span class="marca-nombre">De Idea a Digital</span>
+      </a>
+      <a class="boton" href="https://forms.gle/iHYVfMaXcUp7QrxD8" target="_blank" rel="noopener noreferrer">
+        Registrarme
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="contenedor hero-contenido">
+        <span class="etiqueta">RECURSO PRÁCTICO</span>
+        <h1>Desbloquea tus ideas con 300 prompts</h1>
+        <p>
+          Descubre prompts prácticos para crear contenido, explorar ideas
+          y trabajar con herramientas de inteligencia artificial.
+        </p>
+        <a class="boton" href="https://forms.gle/iHYVfMaXcUp7QrxD8" target="_blank" rel="noopener noreferrer">
+          Quiero registrarme
+        </a>
+        <div class="nota-boton">Completa el formulario para recibir información sobre la guía.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="contenedor">
+        <h2>¿Qué encontrarás en la guía?</h2>
+        <p class="intro">
+          Ideas listas para adaptar a tus objetivos y llevar tus proyectos
+          un paso más allá en el mundo digital.
+        </p>
+
+        <div class="beneficios">
+          <article class="tarjeta">
+            <div class="numero">01</div>
+            <h3>Ideas para crear contenido</h3>
+            <p>Prompts para inspirarte con publicaciones y contenido digital.</p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="numero">02</div>
+            <h3>Organización de proyectos</h3>
+            <p>Instrucciones para ordenar tareas, planear y desarrollar ideas.</p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="numero">03</div>
+            <h3>Prompts adaptables</h3>
+            <p>Úsalos como punto de partida y ajústalos a lo que necesitas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #eef4fb;">
+      <div class="contenedor">
+        <h2>Preguntas Frecuentes</h2>
+        <p class="intro">Resolvemos tus dudas sobre cómo acceder y aprovechar la guía.</p>
+
+        <div class="faq-contenedor">
+          <div class="faq-item">
+            <button class="faq-pregunta">
+              ¿Cómo recibiré la guía de prompts?
+              <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <p>Una vez que te registres en el formulario, te enviaremos la información de acceso directamente al correo o WhatsApp que nos proporciones.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pregunta">
+              ¿Para qué herramientas sirven estos prompts?
+              <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <p>Están diseñados para ser versátiles y adaptarse a inteligencias artificiales como ChatGPT, Claude, Gemini y otras plataformas de generación de texto y contenido.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pregunta">
+              ¿Necesito conocimientos previos de Inteligencia Artificial?
+              <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <p>No, la guía está estructurada para que cualquier persona, sin importar su nivel de experiencia, pueda copiar, pegar y personalizar los prompts de forma sencilla.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="registro" id="registro">
+      <div class="contenedor">
+        <h2>Recibe información de la guía</h2>
+        <p class="intro">
+          Regístrate en el formulario y déjanos tus datos para gestionar tu solicitud.
+        </p>
+
+        <div class="registro-caja">
+          <p>
+            Al continuar, abrirás nuestro formulario seguro de Google Forms.
+            Allí podrás ingresar tu nombre, correo electrónico y tu WhatsApp.
+          </p>
+          <a class="boton" href="https://forms.gle/iHYVfMaXcUp7QrxD8" target="_blank" rel="noopener noreferrer">
+            Quiero conocer la guía
+          </a>
+          <p class="privacidad">
+            Usaremos tus datos únicamente para gestionar tu solicitud y contactarte sobre esta guía, según la autorización indicada en el formulario.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <p>&copy; 2026 De Idea a Digital. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-pregunta').forEach(boton => {
+      boton.addEventListener('click', () => {
+        const item = boton.parentElement;
+        item.classList.toggle('activo');
+      });
+    });
+  </script>
+</body>
+</html>
